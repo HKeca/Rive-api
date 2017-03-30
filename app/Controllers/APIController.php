@@ -11,6 +11,27 @@ use App\Models\Persons;
 
 class APIController extends Controller
 {
+    // api properties
+    private $apiVersion = '1.0';
+    private $welcomeMsg = 'Rive api web app.';
+
+
+    /*
+        Welcome
+
+        Return server welcome message
+    */
+    public function getWelcome($request, $response) {
+        // Array for server properties
+        $jData = array('ApiVersion' => $this->apiVersion, 'Message' => $this->welcomeMsg);
+
+        // Create json response
+        $res = $response->withJson($jData);
+
+        // Return response
+        return $res;
+    }
+
     /*
         All persons
 
@@ -100,10 +121,10 @@ class APIController extends Controller
     */
     public function getPersonUid($request, $response, $args) {
         // Get name from the route
-        $name = $args['uid'];
+        $userid = $args['uid'];
 
         // Query the database for the user
-        $person = Persons::where("uid", "=", $name)->first();
+        $person = Persons::where("uid", "=", $userid)->first();
 
         $jData = array('uid' => $person->uid, 'firstname' => $person->firstname, 'lastname' => $person->lastname, 'dob' => $person->dob, 'zip' => $person->zipcode);
 
@@ -113,5 +134,12 @@ class APIController extends Controller
         // return the response
         return $res;
     }
-    
+
+    /*
+        Create user
+
+    */
+    public function postCreateUser($request, $response) {
+        // Todo
+    }
 }

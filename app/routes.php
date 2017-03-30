@@ -3,7 +3,9 @@
     App Routes
 */
 
-$app->get("/", "APIController:getPersons");
+$app->get("/", "APIController:getWelcome");
+
+$app->get("/persons", "APIController:getPersons");
 
 $app->get("/firstname/{name}", "APIController:getPersonFirstName");
 
