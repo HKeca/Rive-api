@@ -14,3 +14,4 @@ Be sure to run this command in the public directory
 
 ## Todo
 * Add Config (Right now access the config in the bootstrap/app.php file)
+* Fix the HTTP_ORIGIN, right now allows everyone in
