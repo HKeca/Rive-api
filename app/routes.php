@@ -12,3 +12,8 @@ $app->get("/firstname/{name}", "APIController:getPersonFirstName");
 $app->get("/lastname/{name}", "APIController:getPersonLastName");
 
 $app->get("/uid/{uid}", "APIController:getPersonUid");
+
+/*
+    Update User
+*/
+$app->put("/update", "APIController:updatePerson");

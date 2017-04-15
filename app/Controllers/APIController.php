@@ -142,4 +142,30 @@ class APIController extends Controller
     public function postCreateUser($request, $response) {
         // Todo
     }
+
+    /*
+        Update user
+    */
+    public function updateUser($request, $response) {
+        $userId     = $request->put('uid');
+        $firstName  = $request->put('firstname');
+        $lastName   = $request->put('lastname');
+        $dob        = $request->put('dob');
+        $zipCode    = $request->put('zip');
+
+        $a = array('userid' => $userId, 'firstname' => $firstName, 'lastname' => $lastName, 'dob' => $dob, 'zip' => $zipCode);
+
+        $res = $response->withJson($a);
+
+        return $res;
+
+        $person = Persons::where("uid", "=", $userId)->first();
+
+        $person->firstname  = $firstName;
+        $person->lastname   = $lastName;
+        $person->dob        = $dob;
+        $person->zipcode    = $zipCode;
+
+        $person->save();
+    }
 }
